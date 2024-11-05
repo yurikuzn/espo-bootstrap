@@ -1,5 +1,5 @@
 /*!
- * Bootstrap v0.1.0 (https://getbootstrap.com/)
+ * Bootstrap v0.1.1 (https://getbootstrap.com/)
  * Copyright 2011-2024 Twitter, Inc.
  * Licensed under the MIT license
  */
@@ -1535,6 +1535,12 @@ if (typeof jQuery === 'undefined') {
   }
 
   Tooltip.prototype.fixTitle = function () {
+    // Espo fix
+    if (this.options.title || this.options.keepElementTitle) {
+      return;
+    }
+    // End Espo fix
+
     var $e = this.$element
     if ($e.attr('title') || typeof $e.attr('data-original-title') != 'string') {
       $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')

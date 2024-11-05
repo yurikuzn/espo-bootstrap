@@ -497,6 +497,12 @@
   }
 
   Tooltip.prototype.fixTitle = function () {
+    // Espo fix
+    if (this.options.title || this.options.keepElementTitle) {
+      return;
+    }
+    // End Espo fix
+
     var $e = this.$element
     if ($e.attr('title') || typeof $e.attr('data-original-title') != 'string') {
       $e.attr('data-original-title', $e.attr('title') || '').attr('title', '')

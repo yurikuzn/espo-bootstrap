@@ -194,6 +194,10 @@
         .addClass('modal-backdrop ' + animate)
         .appendTo(this.$body)
 
+      if (this.options.onBackdropCreate) {
+          this.options.onBackdropCreate(this.$backdrop.get(0));
+      }
+
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
         if (this.ignoreBackdropClick) {
           this.ignoreBackdropClick = false

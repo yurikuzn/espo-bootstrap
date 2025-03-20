@@ -1,6 +1,6 @@
 /*!
  * Bootstrap v0.1.1 (https://getbootstrap.com/)
- * Copyright 2011-2024 Twitter, Inc.
+ * Copyright 2011-2025 Twitter, Inc.
  * Licensed under the MIT license
  */
 
@@ -872,6 +872,10 @@ if (typeof jQuery === 'undefined') {
       this.$backdrop = $(document.createElement('div'))
         .addClass('modal-backdrop ' + animate)
         .appendTo(this.$body)
+
+      if (this.options.onBackdropCreate) {
+          this.options.onBackdropCreate(this.$backdrop.get(0));
+      }
 
       this.$element.on('click.dismiss.bs.modal', $.proxy(function (e) {
         if (this.ignoreBackdropClick) {
